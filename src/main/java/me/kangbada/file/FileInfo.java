@@ -10,7 +10,7 @@ public class FileInfo {
             System.exit(0);
         }
 
-        File f = new File(args[0]);
+        File f = new File("/Users/kangbada", args[0]);
         if (f.exists()) {
             System.out.println("length : " + f.length());
             System.out.println("canRead : " + f.canRead());
