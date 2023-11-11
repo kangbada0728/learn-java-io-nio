@@ -6,17 +6,17 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ChatThread extends Thread {
     private final Socket sock;
     private String id;
     private BufferedReader br;
-    private final HashMap<String, PrintWriter> clientWriters;
+    private final Map<String, PrintWriter> clientWriters;
     private boolean initFlag = false;
 
-    public ChatThread(Socket sock, HashMap<String, PrintWriter> clientWriters) {
+    public ChatThread(Socket sock, Map<String, PrintWriter> clientWriters) {
         this.sock = sock;
         this.clientWriters = clientWriters;
         try {
