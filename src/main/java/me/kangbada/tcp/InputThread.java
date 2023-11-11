@@ -5,26 +5,26 @@ import java.net.Socket;
 
 public class InputThread extends Thread {
     private Socket sock;
-    private BufferedReader serverInputStream;
+    private BufferedReader clientInputStream;
 
-    public InputThread(Socket sock, BufferedReader serverInputStream) {
+    public InputThread(Socket sock, BufferedReader clientInputStream) {
         this.sock = sock;
-        this.serverInputStream = serverInputStream;
+        this.clientInputStream = clientInputStream;
     }
 
     @Override
     public void run() {
         try {
             String line;
-            while ((line = serverInputStream.readLine()) != null) {
+            while ((line = clientInputStream.readLine()) != null) {
                 System.out.println(line);
             }
         } catch (Exception e) {
             System.out.println(e);
         } finally {
             try {
-                if (serverInputStream != null) {
-                    serverInputStream.close();
+                if (clientInputStream != null) {
+                    clientInputStream.close();
                 }
             } catch (Exception e) {}
             try {

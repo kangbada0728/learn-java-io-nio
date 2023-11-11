@@ -14,20 +14,20 @@ public class ChatClient {
         boolean endflag = false;
 
         try (Socket sock = new Socket(serverIp, 10001);
-             PrintWriter serverOutputStream = new PrintWriter(new OutputStreamWriter(sock.getOutputStream()));
-             BufferedReader serverInputStream = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+             PrintWriter clientOutputStream = new PrintWriter(new OutputStreamWriter(sock.getOutputStream()));
+             BufferedReader clientInputStream = new BufferedReader(new InputStreamReader(sock.getInputStream()));
              BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in))) {
 
-            serverOutputStream.println(clientId);
-            serverOutputStream.flush();
+            clientOutputStream.println(clientId);
+            clientOutputStream.flush();
 
-            InputThread it = new InputThread(sock, serverInputStream);
+            InputThread it = new InputThread(sock, clientInputStream);
             it.start();
 
             String line;
             while ((line = keyboard.readLine()) != null) {
-                serverOutputStream.println(line);
-                serverOutputStream.flush();
+                clientOutputStream.println(line);
+                clientOutputStream.flush();
                 if (line.equals("/quit")) {
                     endflag = true;
                     break;
