@@ -71,8 +71,8 @@ public class ChatThread extends Thread {
     }
 
     private void sendMsg(String msg) {
-        List<String> splits = Arrays.asList(msg.split(" ", 2)); // format : /to 전송할_클라이언트_ID message
-        if (splits.size() != 3) {
+        List<String> splits = Arrays.asList(msg.split(" ", 3)); // format : /to 전송할_클라이언트_ID message
+        if (splits.size() == 3) {
             String to = splits.get(1);
             String realMsg = splits.get(2);
 
