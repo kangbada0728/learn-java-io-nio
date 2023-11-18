@@ -9,7 +9,6 @@ public class UDPEchoServer {
         int port = 3000;
         System.out.println("접속 대기상태입니다.");
         try (DatagramSocket dsock = new DatagramSocket(port)) {
-            String line;
             while (true) {
                 byte[] buffer = new byte[1024];
                 DatagramPacket receivePacket = new DatagramPacket(buffer, buffer.length);
