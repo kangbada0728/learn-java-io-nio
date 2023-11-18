@@ -21,7 +21,11 @@ public class UDPEchoServer {
                     break;
                 }
 
-                DatagramPacket sendPacket = new DatagramPacket(receivePacket.getData(), receivePacket.getData().length, receivePacket.getAddress(), receivePacket.getPort());
+                DatagramPacket sendPacket = new DatagramPacket(
+                        receivePacket.getData(),
+                        receivePacket.getData().length,
+                        receivePacket.getAddress(),
+                        receivePacket.getPort());
                 dsock.send(sendPacket);
             }
             System.out.println("UDPEchoServer 를 종료합니다.");
